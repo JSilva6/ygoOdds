@@ -1,0 +1,82 @@
+/* base.css: Reset and Basic Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: min(650px, 98vw);
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #007BFF;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 1.1em;
+  color: #666;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.section h2 {
+  margin-top: 0;
+  color: #007BFF;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.input-group {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.input-group label {
+  flex: 0 0 200px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.input-group input {
+  flex: 1 1 auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+

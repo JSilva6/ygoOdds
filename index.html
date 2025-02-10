@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- Responsive meta tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odds Calculator</title>
+  <!-- Include CSS sub-files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dark.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Odds Calculator</h1>
+      <p>Quickly simulate your deck search odds.</p>
+      <button id="dark-toggle" class="btn toggle-btn" title="Toggle Dark/Light Theme">Toggle Theme</button>
+    </header>
+
+    <!-- Deck Configuration -->
+    <section id="deck-config" class="section">
+      <h2>Deck Configuration</h2>
+      <div class="input-group">
+        <label for="total-cards">Total Cards in Deck:</label>
+        <input type="number" id="total-cards" value="40" min="1">
+      </div>
+      <div class="input-group">
+        <label for="draw-size">Cards Drawn:</label>
+        <input type="number" id="draw-size" value="5" min="1">
+      </div>
+    </section>
+
+    <!-- Card Groups Section -->
+    <section id="card-groups-section" class="section">
+      <h2>Card Groups</h2>
+      <div id="card-groups-container"></div>
+      <button id="add-card-group" class="btn">Add Card Group</button>
+    </section>
+
+    <!-- Searchers Section (now below Card Groups) -->
+    <section id="searchers-section" class="section">
+      <h2>Searchers</h2>
+      <div id="searchers-container"></div>
+      <button id="add-searcher" class="btn">Add Searcher</button>
+    </section>
+
+    <!-- Calculation Section -->
+    <section id="calculation-section" class="section">
+      <div id="calculation-content" class="calc-content">
+        <div id="total-registered" class="total-registered">Total Registered Cards: 0</div>
+        <div class="calc-buttons">
+          <button id="calculate-button" class="btn primary">Calculate</button>
+          <div id="result" class="result"></div>
+        </div>
+      </div>
+      <div id="samples" class="samples" style="display: none;">
+        <div class="samples-header">
+          <span class="samples-title">Draw examples</span>
+          <span class="tooltip">
+            <i class="info-icon">?</i>
+            <span class="tooltiptext">These are a few sample successful hands drawn from your deck.</span>
+          </span>
+        </div>
+        <hr class="samples-separator">
+        <!-- Sample draws will be appended here -->
+      </div>
+      <div id="error" class="error"></div>
+      <!-- Import/Export Section -->
+      <div id="import-export" class="import-export">
+        <button id="export-button" class="btn">Export Config</button>
+        <button id="import-button" class="btn">Import Config</button>
+        <input type="file" id="import-file" accept=".json" style="display: none;">
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Odds Calculator</p>
+    </footer>
+  </div>
+  <!-- Include JS sub-files -->
+  <script src="js/helpers.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
+

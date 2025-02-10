@@ -1,0 +1,564 @@
+/* components.css: UI Components, Buttons, and Layout */
+
+/* Buttons */
+.btn {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #0056b3;
+}
+.btn.primary {
+  background: #28a745;
+}
+.btn.primary:hover {
+  background: #218838;
+}
+
+/* Add Card Button (for linked cards) */
+.add-card-btn {
+  background: #007BFF;
+  color: #fff;
+  border: 1px solid #007BFF;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  width: auto; /* desktop: auto width */
+}
+.add-card-btn:hover {
+  background: #0056b3;
+}
+
+/* Calculation Area */
+.calc-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.calc-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.result {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #2ecc71;
+}
+.total-registered {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Samples Area */
+.samples {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px dashed #007BFF;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+.samples-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.samples-title {
+  font-weight: bold;
+}
+.samples-separator {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.sample-draw {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap; /* allow wrapping */
+}
+.sample-card {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 0.9em;
+  min-width: 60px;
+  text-align: center;
+  color: #333; /* Always dark text */
+}
+.sample-separator {
+  font-size: 1em;
+  color: #333;
+}
+
+/* Import/Export Area */
+.import-export {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Searcher Slot Styles */
+.searcher-slot {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background: #fafafa;
+  position: relative;
+  padding: 8px;
+  transition: opacity 0.3s;
+}
+.searcher-slot.disabled {
+  opacity: 0.6;
+}
+.searcher-header {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+.searcher-header .remove-searcher {
+  display: inline-block;
+  background: #ff4d4d;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.6em;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.searcher-header .remove-searcher:hover {
+  background: #cc0000;
+}
+.searcher-body {
+  margin-top: 10px;
+}
+.searcher-body .searcher-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  gap: 10px;
+}
+.searcher-body .field {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.field.half {
+  width: 48%;
+}
+.field.small {
+  width: 80px;
+}
+.field label {
+  margin-right: 5px;
+  white-space: nowrap;
+  width: 5em;
+}
+
+.field.max {
+  margin-top: .5em;
+  justify-content: flex-end;
+}
+.field.max label {
+  width: auto;
+}
+.searcher-body input[type="text"],
+.searcher-body input[type="number"] {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.disable-text {
+  font-size: 0.85em;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  display: inline-block;
+  position: relative;
+  cursor: help;
+  color: #007BFF;
+  margin-left: 5px;
+  pointer-events: auto;
+}
+.tooltip .info-icon {
+  pointer-events: auto;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 5px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: normal;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Card Group Styles */
+.card-group {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #fafafa;
+  position: relative;
+  transition: opacity 0.3s;
+}
+.card-group.disabled {
+  opacity: 0.6;
+}
+.card-group-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.delete-group {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff4d4d;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.8em;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.delete-group:hover {
+  background: #cc0000;
+}
+.card-group-engine,
+.card-group-settings {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.card-group-engine label {
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.card-group-engine input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.card-group-settings {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.group-settings-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+.card-group-settings label {
+  white-space: nowrap;
+}
+.card-group-settings input {
+  width: 50px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.card-group-settings select {
+  width: 120px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.group-total-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.group-total-label {
+  white-space: nowrap;
+}
+.group-total {
+  font-weight: bold;
+}
+.card-rows {
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+/* Linked Card Row (Linked Cards Section) */
+/* Desktop: Single-line layout */
+.card-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px dashed #bbb;
+  padding: 5px 0;
+  padding-bottom: 15px;
+  margin: 10px 0;
+}
+.card-row:first-child {
+  margin-top: 0;
+}
+.card-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.card-row-top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.card-row-top label {
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.card-row-top input.card-name {
+  flex: 1;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.card-row-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-row-bottom label {
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.card-row-bottom input.card-amount {
+  width: 50px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.card-row-bottom .delete-card {
+  margin-left: auto;
+}
+
+.delete-card {
+  color: red;
+  cursor: pointer;
+  font-size: 1.6em;
+  height: 1em;
+  border: 1px solid red;
+  border-radius: 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+}
+
+
+/* Card Group Footer */
+.card-group-footer {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.unique-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.disable-group-footer {
+  font-size: 0.85em;
+  color: #666;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.disable-group-footer .tooltiptext {
+  font-size: 0.8em;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* ==========================================================================
+   DARK THEME ADJUSTMENTS (Components)
+   ========================================================================== */
+body.dark .total-registered {
+  color: #ddd;
+}
+body.dark .card-group {
+  background: #555;
+  border-color: #777;
+}
+body.dark .samples {
+  background: #444;
+  border-color: #888;
+}
+body.dark .searcher-slot {
+  background: #555;
+  border-color: #777;
+}
+body.dark .total-registered {
+  color: #ddd;
+}
+/* Force add-card button style to remain as light mode */
+body.dark .add-card-btn {
+  background: #007BFF !important;
+  color: #fff !important;
+  border: 1px solid #007BFF !important;
+}
+body.dark .disable-group-footer {
+  color: #ccc;
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES (Mobile)
+   ========================================================================== */
+@media (max-width: 680px) {
+  /* A) Deck Configuration: Remove fixed label width */
+  .input-group label {
+    flex: 0 0 auto;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searcher-body .searcher-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .searcher-body .field {
+    width: 100%;
+  }
+  .field.max {
+    margin-top: .5em;
+    justify-content: unset;
+  }
+
+  .card-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+  .card-row-top {
+    width: 100%;
+    /* display: block; */
+  }
+  .card-row-top label {
+    display: inline-block;
+    width: 6em;
+  }
+  .card-row-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .card-row-bottom input.card-amount {
+    width: 50px;
+  }
+  .card-row-bottom .delete-card {
+    margin-left: auto;
+  }
+  .card-row-bottom label {
+    display: inline-block;
+    width: 6em;
+  }
+  
+  /* E) Card Group Settings: Stack Desired Amount and Operator vertically */
+  .card-group-engine {
+    gap: 5px;
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #bbb;
+    padding-bottom: 10px;
+  }
+  .group-settings-left {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .group-total-container {
+    margin-left: 0;
+    margin-top: 10px;
+    border-top: dashed 1px #bbb;
+    padding-top: 20px;
+    width: 100%;
+  }
+  .group-settings-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .group-settings-option select,
+  .group-settings-option input {
+    flex: 1;
+    width: 100%;
+  }
+  
+  
+  /* F) Reposition Toggle Theme button */
+  header .toggle-btn {
+    position: static;
+    margin-top: 10px;
+  }
+  
+  /* G) Ensure sample draws wrap properly */
+  .sample-draw {
+    flex-wrap: wrap;
+  }
+}
+

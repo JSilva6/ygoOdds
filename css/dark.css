@@ -1,0 +1,57 @@
+/* dark.css: Dark Theme Overrides */
+
+body.dark {
+  background: #333;
+  color: #ddd;
+}
+
+body.dark .container {
+  background: #444;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+body.dark input,
+body.dark select {
+  background: #666;
+  color: #ddd;
+  border: 1px solid #888;
+}
+
+body.dark .btn {
+  background: #0056b3;
+}
+
+body.dark .btn.primary {
+  background: #1e7e34;
+}
+
+body.dark .card-group {
+  background: #555;
+  border-color: #777;
+}
+
+body.dark .samples {
+  background: #444;
+  border-color: #888;
+}
+
+body.dark .searcher-slot {
+  background: #555;
+  border-color: #777;
+}
+
+body.dark .total-registered {
+  color: #ddd;
+}
+
+/* Force add-card button style to remain as light mode */
+body.dark .add-card-btn {
+  background: #007BFF !important;
+  color: #fff !important;
+  border: 1px solid #007BFF !important;
+}
+
+body.dark .disable-group-footer {
+  color: #ccc;
+}
+
