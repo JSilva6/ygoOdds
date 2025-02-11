@@ -1,4 +1,4 @@
-// calculator.js
+// js/calculator.js
 
 function calculateOdds(config) {
   const cardTypes = config.deck;
@@ -22,13 +22,14 @@ function calculateOdds(config) {
     return result;
   }
 
+  // Modified evaluateSuccess function:
   function evaluateSuccess(drawnDistribution) {
     const conditions = config.successConditions;
     const nConditions = conditions.length;
-    let conditionResults = new Array(nConditions).fill(0);
-    let bonusValues = new Array(nConditions).fill(0);
+    let conditionResults = new Array(nConditions).fill(0); // base counts from non-searcher cards
+    let bonusValues = new Array(nConditions).fill(0); // bonus per condition
 
-    // 1. Base count from non-searcher cards.
+    // 1. Compute base counts from non-searcher cards.
     for (let i = 0; i < nConditions; i++) {
       const cond = conditions[i];
       if (cond.unique) {
@@ -52,27 +53,52 @@ function calculateOdds(config) {
       }
     }
 
-    // 2. Bonus for conditions with engines.
+    // 2. Compute bonus values with allocation across conditions that share engines.
+    // We'll create an object to track which engine tags have already been used.
+    let usedEngines = {}; // keys: engine tag, value: true if bonus already allocated
+
     for (let i = 0; i < nConditions; i++) {
       const cond = conditions[i];
       if (cond.engines && cond.engines.length > 0) {
-        let searcherSum = 0;
-        for (let j = 0; j < cardTypes.length; j++) {
-          const card = cardTypes[j];
-          if (card.isSearcher) {
-            let se = (card.searchForEngines || "").split(',').map(s => s.trim()).filter(s => s);
-            if (se.some(e => cond.engines.includes(e))) {
-              searcherSum += drawnDistribution[j];
+        // Instead of summing over all searchers, we check if any engine is available.
+        let bonusAllocated = false;
+        // For each engine tag listed in this condition:
+        for (let k = 0; k < cond.engines.length; k++) {
+          const engine = cond.engines[k];
+          // Only allocate bonus if we haven't already used this engine for a bonus.
+          if (!usedEngines[engine]) {
+            // Sum the drawn searcher count for this engine:
+            let searcherSum = 0;
+            for (let j = 0; j < cardTypes.length; j++) {
+              const card = cardTypes[j];
+              if (card.isSearcher) {
+                let se = (card.searchForEngines || "")
+                  .split(',')
+                  .map(s => s.trim())
+                  .filter(s => s);
+                // If this searcher qualifies for the engine:
+                if (se.includes(engine)) {
+                  searcherSum += drawnDistribution[j];
+                }
+              }
+            }
+            if (searcherSum > 0) {
+              bonusValues[i] = 1; // Award bonus for this condition.
+              usedEngines[engine] = true; // Mark this engine as used.
+              bonusAllocated = true;
+              break; // Stop checking further engines for this condition.
             }
           }
         }
-        bonusValues[i] = (searcherSum > 0 ? 1 : 0);
+        if (!bonusAllocated) {
+          bonusValues[i] = 0;
+        }
       } else {
         bonusValues[i] = 0;
       }
     }
 
-    // 3. Effective count = base + bonus.
+    // 3. Compute effective count = base + bonus for each condition and check against condition.
     for (let i = 0; i < nConditions; i++) {
       const effective = conditionResults[i] + bonusValues[i];
       const cond = conditions[i];
